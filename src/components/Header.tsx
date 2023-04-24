@@ -14,7 +14,7 @@ const Header = () => {
         <a href="/" className="text-2xl font-bold">
           AC
         </a>
-        <ul className="flex">
+        <ul className="hidden sm:flex">
           <li className="mx-4">
             <a href="/projects" className="hover:text-white">
               Projects
