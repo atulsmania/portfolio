@@ -17,7 +17,7 @@ const BottomNav = () => {
     >
       <ul className="flex justify-evenly items-center">
         <li className="mx-4">
-          <a href="/projects" className="hover:text-white">
+          <a href="#projects" className="hover:text-white">
             <svg
               enableBackground="new 0 0 128 128"
               className="w-6"
@@ -32,7 +32,7 @@ const BottomNav = () => {
           </a>
         </li>
         <li className="mx-4">
-          <a href="/connect" className="hover:text-white">
+          <a href="#connect" className="hover:text-white">
             <svg
               enableBackground="0 0 24 24"
               viewBox="0 0 24 24"
@@ -48,7 +48,7 @@ const BottomNav = () => {
           </a>
         </li>
         <li className="mx-4">
-          <a href="/about" className="hover:text-white">
+          <a href="#about" className="hover:text-white">
             <svg
               className="w-6"
               viewBox="0 0 32 32"

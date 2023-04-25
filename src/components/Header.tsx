@@ -16,17 +16,17 @@ const Header = () => {
         </a>
         <ul className="hidden sm:flex">
           <li className="mx-4">
-            <a href="/projects" className="hover:text-white">
+            <a href="#projects" className="hover:text-white">
               Projects
             </a>
           </li>
           <li className="mx-4">
-            <a href="/connect" className="hover:text-white">
+            <a href="#connect" className="hover:text-white">
               Connect
             </a>
           </li>
           <li className="mx-4">
-            <a href="/about" className="hover:text-white">
+            <a href="#about" className="hover:text-white">
               About
             </a>
           </li>
