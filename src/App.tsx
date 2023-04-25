@@ -10,7 +10,7 @@ const App = () => {
     <div
       className={classNames(
         "min-h-screen bg-black text-slate-300",
-        "font-mono md:px-32 px-4 tracking-widest"
+        "font-mono md:px-32 px-4 tracking-widest text-neutral-400"
       )}
     >
       <Header />
