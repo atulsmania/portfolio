@@ -1,4 +1,4 @@
-import { PropsWithChildren, useRef } from "react";
+import { PropsWithChildren, useContext, useRef } from "react";
 import {
   motion,
   useScroll,
@@ -8,11 +8,10 @@ import {
   useVelocity,
   useAnimationFrame,
   wrap,
-  useInView,
 } from "framer-motion";
 import classNames from "classnames";
-import { useMobileIdentifier } from "../hooks/useMobileIdentifier";
 import Card from "../components/Card";
+import { AppContext } from "../Context/GlobalContext";
 
 interface ParallaxProps extends PropsWithChildren {
   baseVelocity: number;
@@ -21,8 +20,8 @@ interface ParallaxProps extends PropsWithChildren {
 const skillList = [
   "Javascript",
   "React",
-  "Typescript",
   "Redux",
+  "Typescript",
   "React Query",
   "Tailwind",
   "Storybook",
@@ -33,6 +32,7 @@ const skillList = [
 ];
 
 const ParallaxText = ({ children, baseVelocity = 1 }: ParallaxProps) => {
+  const { isMobile } = useContext(AppContext);
   const baseX = useMotionValue(0);
   const { scrollY } = useScroll();
   const scrollVelocity = useVelocity(scrollY);
@@ -47,20 +47,23 @@ const ParallaxText = ({ children, baseVelocity = 1 }: ParallaxProps) => {
   const x = useTransform(baseX, (v) => `${wrap(-20, -70, v)}%`);
 
   const directionFactor = useRef<number>(1);
-  useAnimationFrame((_, delta) => {
-    if (scrollY.get() === scrollY.getPrevious()) return;
-    let moveBy = directionFactor.current * baseVelocity * (delta / 1000);
 
-    if (velocityFactor.get() < 0) {
-      directionFactor.current = -1;
-    } else if (velocityFactor.get() > 0) {
-      directionFactor.current = 1;
-    }
+  if (!isMobile) {
+    useAnimationFrame((_, delta) => {
+      if (scrollY.get() === scrollY.getPrevious()) return;
+      let moveBy = directionFactor.current * baseVelocity * (delta / 1000);
 
-    moveBy += directionFactor.current * moveBy * velocityFactor.get();
+      if (velocityFactor.get() < 0) {
+        directionFactor.current = -1;
+      } else if (velocityFactor.get() > 0) {
+        directionFactor.current = 1;
+      }
 
-    baseX.set(baseX.get() + moveBy);
-  });
+      moveBy += directionFactor.current * moveBy * velocityFactor.get();
+
+      baseX.set(baseX.get() + moveBy);
+    });
+  }
 
   return (
     <div className="w-full flex flex-nowrap">
@@ -88,22 +91,28 @@ const Skill = ({ children }: PropsWithChildren) => {
 };
 
 export default () => {
-  const { isMobile } = useMobileIdentifier();
+  const { isMobile } = useContext(AppContext);
   const multiplier = isMobile ? 2.5 : 1;
+
+  const skillArr = (isMobile ? skillList : [...skillList, ...skillList]).map(
+    (item, i) => <Skill key={i}>{item}</Skill>
+  );
 
   return (
     <Card>
       <section className="space-y-4 md:text-clip overflow-hidden relative">
-        <ParallaxText baseVelocity={-1 * multiplier}>
-          {[...skillList, ...skillList].map((item, i) => (
-            <Skill key={i}>{item}</Skill>
-          ))}
-        </ParallaxText>
-        <ParallaxText baseVelocity={1 * multiplier}>
-          {[...skillList, ...skillList].reverse().map((item, i) => (
-            <Skill key={i}>{item}</Skill>
-          ))}
-        </ParallaxText>
+        {!isMobile ? (
+          <>
+            <ParallaxText baseVelocity={-1 * multiplier}>
+              {skillArr}
+            </ParallaxText>
+            <ParallaxText baseVelocity={1 * multiplier}>
+              {skillArr.reverse()}
+            </ParallaxText>
+          </>
+        ) : (
+          <div className="flex flex-wrap gap-2">{skillArr}</div>
+        )}
       </section>
     </Card>
   );
