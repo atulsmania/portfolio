@@ -32,9 +32,7 @@ const skillList = [
   "Svelte",
 ];
 
-const ParallaxText = ({ children, baseVelocity = 100 }: ParallaxProps) => {
-  const containerRef = useRef<HTMLDivElement>(null);
-  const isInView = useInView(containerRef);
+const ParallaxText = ({ children, baseVelocity = 1 }: ParallaxProps) => {
   const baseX = useMotionValue(0);
   const { scrollY } = useScroll();
   const scrollVelocity = useVelocity(scrollY);
@@ -46,13 +44,11 @@ const ParallaxText = ({ children, baseVelocity = 100 }: ParallaxProps) => {
     clamp: false,
   });
 
-  const x = useTransform(baseX, (v) => `${wrap(-20, -40, v)}%`);
+  const x = useTransform(baseX, (v) => `${wrap(-20, -70, v)}%`);
 
   const directionFactor = useRef<number>(1);
   useAnimationFrame((_, delta) => {
-    if (!isInView) return;
     if (scrollY.get() === scrollY.getPrevious()) return;
-
     let moveBy = directionFactor.current * baseVelocity * (delta / 1000);
 
     if (velocityFactor.get() < 0) {
@@ -67,7 +63,7 @@ const ParallaxText = ({ children, baseVelocity = 100 }: ParallaxProps) => {
   });
 
   return (
-    <div ref={containerRef} className="w-full flex flex-nowrap">
+    <div className="w-full flex flex-nowrap">
       <motion.div
         className="flex flex-nowrap whitespace-nowrap gap-4"
         style={{ x }}
