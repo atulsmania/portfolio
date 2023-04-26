@@ -5,9 +5,9 @@ const Main = () => {
     <main
       id="about"
       className={classNames(
-        "font-sans flex flex-wrap flex-col justify-end gap-12",
-        "md:justify-between md:items-end md:gap-0 md:flex-row",
-        " min-h-[calc(100vh-100px)]"
+        "font-sans flex flex-wrap flex-col justify-end gap-12 pb-12",
+        "md:justify-between md:items-end md:gap-0 md:flex-row md:pb-0",
+        "min-h-[calc(100vh-100px)]"
       )}
     >
       <div className="md:max-w-2xl w-full space-y-2">
@@ -20,7 +20,7 @@ const Main = () => {
         <h1 className="md:text-9xl font-bold text-5xl break-words">
           <span>Frontend</span>
           <br />
-          <span>Hashira</span>
+          <span>Developer</span>
         </h1>
       </div>
       <div className="font-normal text-xl md:text-end">
