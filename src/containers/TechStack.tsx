@@ -8,8 +8,11 @@ import {
   useVelocity,
   useAnimationFrame,
   wrap,
+  useInView,
 } from "framer-motion";
 import classNames from "classnames";
+import { useMobileIdentifier } from "../hooks/useMobileIdentifier";
+import Card from "../components/Card";
 
 interface ParallaxProps extends PropsWithChildren {
   baseVelocity: number;
@@ -30,6 +33,8 @@ const skillList = [
 ];
 
 const ParallaxText = ({ children, baseVelocity = 100 }: ParallaxProps) => {
+  const containerRef = useRef<HTMLDivElement>(null);
+  const isInView = useInView(containerRef);
   const baseX = useMotionValue(0);
   const { scrollY } = useScroll();
   const scrollVelocity = useVelocity(scrollY);
@@ -41,10 +46,11 @@ const ParallaxText = ({ children, baseVelocity = 100 }: ParallaxProps) => {
     clamp: false,
   });
 
-  const x = useTransform(baseX, (v) => `${wrap(-20, -45, v)}%`);
+  const x = useTransform(baseX, (v) => `${wrap(-20, -40, v)}%`);
 
   const directionFactor = useRef<number>(1);
   useAnimationFrame((_, delta) => {
+    if (!isInView) return;
     if (scrollY.get() === scrollY.getPrevious()) return;
 
     let moveBy = directionFactor.current * baseVelocity * (delta / 1000);
@@ -61,7 +67,7 @@ const ParallaxText = ({ children, baseVelocity = 100 }: ParallaxProps) => {
   });
 
   return (
-    <div className="w-full">
+    <div ref={containerRef} className="w-full flex flex-nowrap">
       <motion.div
         className="flex flex-nowrap whitespace-nowrap gap-4"
         style={{ x }}
@@ -76,7 +82,7 @@ const Skill = ({ children }: PropsWithChildren) => {
   return (
     <span
       className={classNames(
-        "px-4 py-1 text-sm font-semibold rounded-full",
+        "px-4 py-1 text-sm font-semibold rounded-full block",
         "md:py-4 md:px-12 bg-neutral-400/10 md:text-xl"
       )}
     >
@@ -85,24 +91,24 @@ const Skill = ({ children }: PropsWithChildren) => {
   );
 };
 
-export default function App() {
+export default () => {
+  const { isMobile } = useMobileIdentifier();
+  const multiplier = isMobile ? 2.5 : 1;
+
   return (
-    <section
-      style={{
-        boxShadow: "0 20px 20px -20px black",
-      }}
-      className="space-y-4 overflow-hidden"
-    >
-      <ParallaxText baseVelocity={-1}>
-        {skillList.map((item) => (
-          <Skill key={item}>{item}</Skill>
-        ))}
-      </ParallaxText>
-      <ParallaxText baseVelocity={1}>
-        {skillList.reverse().map((item) => (
-          <Skill key={item}>{item}</Skill>
-        ))}
-      </ParallaxText>
-    </section>
+    <Card>
+      <section className="space-y-4 md:text-clip overflow-hidden relative">
+        <ParallaxText baseVelocity={-1 * multiplier}>
+          {[...skillList, ...skillList].map((item, i) => (
+            <Skill key={i}>{item}</Skill>
+          ))}
+        </ParallaxText>
+        <ParallaxText baseVelocity={1 * multiplier}>
+          {[...skillList, ...skillList].reverse().map((item, i) => (
+            <Skill key={i}>{item}</Skill>
+          ))}
+        </ParallaxText>
+      </section>
+    </Card>
   );
-}
+};
