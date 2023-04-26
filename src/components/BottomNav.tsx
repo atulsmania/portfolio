@@ -12,7 +12,7 @@ const BottomNav = () => {
       }}
       className={classNames(
         "bg-black/10 py-4 backdrop-blur-sm z-30",
-        "sticky sm:hidden bottom-0 w-full"
+        "fixed sm:hidden bottom-0 left-0 w-full"
       )}
     >
       <ul className="flex justify-evenly items-center">
