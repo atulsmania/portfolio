@@ -66,9 +66,9 @@ const ParallaxText = ({ children, baseVelocity = 1 }: ParallaxProps) => {
   }
 
   return (
-    <div className="w-full flex flex-nowrap">
+    <div className="flex w-full flex-nowrap">
       <motion.div
-        className="flex flex-nowrap whitespace-nowrap gap-4"
+        className="flex gap-4 flex-nowrap whitespace-nowrap"
         style={{ x }}
       >
         {children}
@@ -100,7 +100,7 @@ export default () => {
 
   return (
     <Card>
-      <section className="space-y-4 md:text-clip overflow-hidden relative">
+      <section className="relative mt-12 space-y-4 overflow-hidden md:text-clip">
         {!isMobile ? (
           <>
             <ParallaxText baseVelocity={-1 * multiplier}>

@@ -4,6 +4,7 @@ import Main from "./containers/Main";
 import Projects from "./containers/Projects";
 import classNames from "classnames";
 import TechStack from "./containers/TechStack";
+import About from "./containers/About";
 import "./App.css";
 
 const App = () => {
@@ -19,7 +20,7 @@ const App = () => {
         <Main />
       </div>
 
-      <TechStack />
+      <About />
 
       <div>
         <Projects />
