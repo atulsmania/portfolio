@@ -8,6 +8,7 @@ import {
   useVelocity,
   useAnimationFrame,
   wrap,
+  useInView,
 } from "framer-motion";
 import classNames from "classnames";
 import Card from "../components/Card";
@@ -15,6 +16,7 @@ import { AppContext } from "../Context/GlobalContext";
 
 interface ParallaxProps extends PropsWithChildren {
   baseVelocity: number;
+  animate: boolean;
 }
 
 const skillList = [
@@ -31,7 +33,11 @@ const skillList = [
   "Svelte",
 ];
 
-const ParallaxText = ({ children, baseVelocity = 1 }: ParallaxProps) => {
+const ParallaxText = ({
+  children,
+  baseVelocity = 1,
+  animate,
+}: ParallaxProps) => {
   const { isMobile } = useContext(AppContext);
   const baseX = useMotionValue(0);
   const { scrollY } = useScroll();
@@ -44,12 +50,13 @@ const ParallaxText = ({ children, baseVelocity = 1 }: ParallaxProps) => {
     clamp: false,
   });
 
-  const x = useTransform(baseX, (v) => `${wrap(-20, -70, v)}%`);
+  const x = useTransform(baseX, (v) => `${wrap(-20, -60, v)}%`);
 
   const directionFactor = useRef<number>(1);
 
   if (!isMobile) {
     useAnimationFrame((_, delta) => {
+      if (!animate) return;
       if (scrollY.get() === scrollY.getPrevious()) return;
       let moveBy = directionFactor.current * baseVelocity * (delta / 1000);
 
@@ -92,15 +99,18 @@ const Skill = ({ children }: PropsWithChildren) => {
 
 export default () => {
   const { isMobile } = useContext(AppContext);
+  const containerRef = useRef<HTMLDivElement>(null);
+  const isInView = useInView(containerRef);
   const multiplier = isMobile ? 2.5 : 1;
 
-  const skillArr = (isMobile ? skillList : [...skillList, ...skillList]).map(
-    (item, i) => <Skill key={i}>{item}</Skill>
-  );
+  const skillArr = [...skillList].map((item, i) => (
+    <Skill key={i}>{item}</Skill>
+  ));
 
   return (
     <Card>
       <section
+        ref={containerRef}
         className={classNames(
           "relative mt-12 space-y-4 overflow-hidden md:text-clip",
           {
@@ -116,11 +126,11 @@ export default () => {
       >
         {!isMobile ? (
           <>
-            <ParallaxText baseVelocity={-1 * multiplier}>
+            <ParallaxText animate={isInView} baseVelocity={-1 * multiplier}>
               {skillArr}
             </ParallaxText>
-            <ParallaxText baseVelocity={1 * multiplier}>
-              {skillArr.reverse()}
+            <ParallaxText animate={isInView} baseVelocity={1 * multiplier}>
+              {[...skillArr].reverse()}
             </ParallaxText>
           </>
         ) : (
