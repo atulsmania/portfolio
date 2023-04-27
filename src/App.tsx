@@ -6,6 +6,7 @@ import classNames from "classnames";
 import TechStack from "./containers/TechStack";
 import About from "./containers/About";
 import "./App.css";
+import Navbar from "./components/Navbar";
 
 const App = () => {
   return (
@@ -21,11 +22,12 @@ const App = () => {
       </div>
 
       <About />
+      <TechStack />
 
-      <div>
-        <Projects />
-        <BottomNav />
-      </div>
+      <Projects />
+
+      <Navbar />
+      <BottomNav />
     </div>
   );
 };
