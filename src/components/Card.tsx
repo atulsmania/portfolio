@@ -21,7 +21,7 @@ const Card = ({ children }: PropsWithChildren) => {
     <motion.div
       initial="offscreen"
       whileInView="onscreen"
-      viewport={{ once: true, amount: 0.2 }}
+      viewport={{ once: true, amount: 0.15 }}
     >
       <motion.div variants={cardVariants}>{children}</motion.div>
     </motion.div>
