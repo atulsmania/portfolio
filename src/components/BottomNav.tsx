@@ -15,9 +15,9 @@ const BottomNav = () => {
         "fixed sm:hidden bottom-0 left-0 w-full"
       )}
     >
-      <ul className="flex justify-evenly items-center">
+      <ul className="flex items-center justify-evenly">
         <li className="mx-4">
-          <a href="#projects" className="hover:text-white">
+          <a href="#projects">
             <svg
               enableBackground="new 0 0 128 128"
               className="w-6"
@@ -32,23 +32,7 @@ const BottomNav = () => {
           </a>
         </li>
         <li className="mx-4">
-          <a href="#connect" className="hover:text-white">
-            <svg
-              enableBackground="0 0 24 24"
-              viewBox="0 0 24 24"
-              xmlns="http://www.w3.org/2000/svg"
-              className="fill-slate-300 w-6"
-            >
-              <g>
-                <path d="M15.6,3.3c-1.4,0-2.6,0.5-3.6,1.5L9.8,7c-0.4,0.4-0.4,1,0,1.4s1,0.4,1.4,0l2.2-2.2c1.2-1.2,3.2-1.2,4.4,0   c0.6,0.6,0.9,1.4,0.9,2.2c0,0.8-0.3,1.6-0.9,2.2l-2.2,2.2c-0.4,0.4-0.4,1,0,1.4c0.2,0.2,0.5,0.3,0.7,0.3s0.5-0.1,0.7-0.3l2.2-2.2   c1-1,1.5-2.2,1.5-3.6c0-1.4-0.5-2.6-1.5-3.6C18.2,3.8,17,3.3,15.6,3.3z" />
-                <path d="M8.4,11.3c0.4-0.4,0.4-1,0-1.4s-1-0.4-1.4,0L4.8,12c-1,1-1.5,2.2-1.5,3.6c0,1.4,0.5,2.6,1.5,3.6c1,1,2.2,1.5,3.6,1.5   s2.6-0.5,3.6-1.5l2.2-2.2c0.4-0.4,0.4-1,0-1.4s-1-0.4-1.4,0l-2.2,2.2c-1.2,1.2-3.2,1.2-4.4,0c-0.6-0.6-0.9-1.4-0.9-2.2   c0-0.8,0.3-1.6,0.9-2.2L8.4,11.3z" />
-                <path d="M9.1,14.9c0.2,0.2,0.5,0.3,0.7,0.3s0.5-0.1,0.7-0.3l4.3-4.3c0.4-0.4,0.4-1,0-1.4s-1-0.4-1.4,0l-4.3,4.3   C8.7,13.8,8.7,14.5,9.1,14.9z" />
-              </g>
-            </svg>
-          </a>
-        </li>
-        <li className="mx-4">
-          <a href="#about" className="hover:text-white">
+          <a href="#about">
             <svg
               className="w-6"
               viewBox="0 0 32 32"

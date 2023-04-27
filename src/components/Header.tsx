@@ -8,26 +8,29 @@ const Header = () => {
           )`,
         backgroundSize: "4px 4px",
       }}
-      className="bg-black/20 py-4 sticky top-0 backdrop-blur-sm z-30"
+      className="sticky top-0 z-30 py-4 bg-black/20 backdrop-blur-sm"
     >
-      <nav className="container mx-auto flex justify-between items-center">
+      <nav className="container flex items-center justify-between mx-auto">
         <a href="/" className="text-2xl font-bold">
           AC
         </a>
-        <ul className="hidden sm:flex">
-          <li className="mx-4">
+        <ul className="flex">
+          <li className="hidden mx-4 sm:block">
             <a href="#projects" className="hover:text-white">
               Projects
             </a>
           </li>
-          <li className="mx-4">
-            <a href="#connect" className="hover:text-white">
-              Connect
-            </a>
-          </li>
-          <li className="mx-4">
+          <li className="hidden mx-4 sm:block">
             <a href="#about" className="hover:text-white">
               About
+            </a>
+          </li>
+          <li className="px-2 py-1 mx-4 font-semibold rounded cursor-pointer sm:p-0 sm:font-normal sm:bg-transparent bg-neutral-400/20">
+            <a
+              href="https://drive.google.com/uc?id=1h7DMUAKIDE2h-WL7pThFyHtROGJquVPU&export=download"
+              className="hover:text-white"
+            >
+              Resume
             </a>
           </li>
         </ul>
