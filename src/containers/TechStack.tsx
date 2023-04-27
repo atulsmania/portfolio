@@ -100,7 +100,20 @@ export default () => {
 
   return (
     <Card>
-      <section className="relative mt-12 space-y-4 overflow-hidden md:text-clip">
+      <section
+        className={classNames(
+          "relative mt-12 space-y-4 overflow-hidden md:text-clip",
+          {
+            [classNames(
+              "before:absolute before:left-0 before:bottom-0 before:top-0 before:w-12 before:z-10",
+              "before:from-black from-0% before:bg-gradient-to-r",
+
+              "after:absolute after:right-0 after:bottom-0 after:top-0 after:w-12 after:z-10",
+              "after:from-black from-0% after:bg-gradient-to-l"
+            )]: !isMobile,
+          }
+        )}
+      >
         {!isMobile ? (
           <>
             <ParallaxText baseVelocity={-1 * multiplier}>
