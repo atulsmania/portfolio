@@ -12,7 +12,7 @@ const App = () => {
   return (
     <div
       className={classNames(
-        "min-h-screen bg-black text-slate-300 md:space-y-16 space-y-8",
+        "min-h-screen bg-black md:space-y-16 space-y-8",
         "font-mono md:px-32 px-4 tracking-widest text-neutral-400"
       )}
     >
