@@ -29,6 +29,7 @@ const Header = () => {
             <a
               href="https://drive.google.com/uc?id=1h7DMUAKIDE2h-WL7pThFyHtROGJquVPU&export=download"
               className="hover:text-white"
+              download
             >
               Resume
             </a>

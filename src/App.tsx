@@ -16,10 +16,8 @@ const App = () => {
         "font-mono md:px-32 px-4 tracking-widest text-neutral-400"
       )}
     >
-      <div>
-        <Header />
-        <Main />
-      </div>
+      <Header />
+      <Main />
 
       <About />
       <TechStack />

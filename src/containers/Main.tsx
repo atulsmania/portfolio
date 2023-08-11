@@ -7,23 +7,23 @@ const Main = () => {
       className={classNames(
         "font-sans flex flex-wrap flex-col justify-end gap-12 pb-12",
         "md:justify-between md:items-end md:gap-0 md:flex-row md:pb-0",
-        "min-h-[calc(100vh-100px)]"
+        "min-h-[calc(100vh-100px)] !mt-0"
       )}
     >
-      <div className="md:max-w-2xl w-full space-y-2">
-        <h2 className="md:text-xl text-lg">
+      <div className="w-full space-y-2 md:max-w-2xl">
+        <h2 className="text-lg md:text-xl">
           Hi there! I'm a frontend developer with two years of experience under
           my belt. I'm really comfortable working with React, TypeScript, and
           Tailwind, and I've used them to create some really cool web
           applications.
         </h2>
-        <h1 className="md:text-9xl font-bold text-5xl break-words">
+        <h1 className="text-5xl font-bold break-words md:text-9xl">
           <span>Frontend</span>
           <br />
           <span>Developer</span>
         </h1>
       </div>
-      <div className="font-normal text-xl md:text-end">
+      <div className="text-xl font-normal md:text-end">
         <span className="text-2xl">Atul Chauhan</span>
         <div className="flex gap-4">
           <a
