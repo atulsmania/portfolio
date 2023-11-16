@@ -1,7 +1,7 @@
 import classNames from "classnames";
-import Card from "../components/Card";
-import Link from "../components/Link";
-import ProjectCard from "../components/ProjectCard";
+import Card from "components/Card";
+import Link from "components/Link";
+import ProjectCard from "components/ProjectCard";
 
 const Projects = () => {
   return (
@@ -17,7 +17,7 @@ const Projects = () => {
           <div className="space-y-4">
             <ProjectCard>
               <ProjectCard.Img
-                className="aspect-video max-w-lg"
+                className="max-w-lg aspect-video"
                 src="https://i.ibb.co/4Fx6vfd/Screenshot-from-2023-04-25-15-38-44.png"
                 alt="findFlix"
               />

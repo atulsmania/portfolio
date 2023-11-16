@@ -12,7 +12,7 @@ import {
 } from "framer-motion";
 import classNames from "classnames";
 import Card from "../components/Card";
-import { AppContext } from "../Context/GlobalContext";
+import { AppContext } from "../context/GlobalContext";
 
 interface ParallaxProps extends PropsWithChildren {
   baseVelocity: number;

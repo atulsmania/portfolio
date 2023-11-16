@@ -1,5 +1,5 @@
-import Card from "../components/Card";
-import Timeline from "../components/Timeline";
+import Card from "components/Card";
+import Timeline from "components/Timeline";
 
 const About = () => {
   return (
