@@ -1,12 +1,11 @@
-import BottomNav from "./components/BottomNav";
-import Header from "./components/Header";
-import Main from "./containers/Main";
-import Projects from "./containers/Projects";
+import BottomNav from "components/BottomNav";
+import Header from "components/Header";
+import Main from "containers/Main";
+import Projects from "containers/Projects";
 import classNames from "classnames";
-import TechStack from "./containers/TechStack";
-import About from "./containers/About";
-import "./App.css";
-import Navbar from "./components/Navbar";
+import TechStack from "containers/TechStack";
+import About from "containers/About";
+import Navbar from "components/Navbar";
 
 const App = () => {
   return (

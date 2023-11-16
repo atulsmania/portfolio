@@ -1,5 +1,5 @@
 import { PropsWithChildren, createContext } from "react";
-import { useMobileIdentifier } from "../hooks/useMobileIdentifier";
+import { useMobileIdentifier } from "hooks/useMobileIdentifier";
 
 type Context = {
   isMobile: boolean;
