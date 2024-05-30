@@ -1,31 +1,28 @@
-import BottomNav from "components/BottomNav";
-import Header from "components/Header";
-import Main from "containers/Main";
-import Projects from "containers/Projects";
-import classNames from "classnames";
-import TechStack from "containers/TechStack";
-import About from "containers/About";
-import Navbar from "components/Navbar";
+import Header from "@/components/Header";
+import Intro from "@/containers/Intro";
+import Experience from "@/containers/Experience";
+import { TooltipProvider } from "@/components/ui/tooltip";
+import { InfiniteMovingCards } from "@/components/ui/infinite-moving-cards";
+import { skills } from "@/lib/utils";
+import Footer from "@/components/Footer";
+import About from "@/containers/About";
 
 const App = () => {
   return (
-    <div
-      className={classNames(
-        "min-h-screen bg-black md:space-y-16 space-y-8",
-        "font-mono md:px-32 px-4 tracking-widest text-neutral-400"
-      )}
-    >
+    <TooltipProvider>
       <Header />
-      <Main />
-
+      <Intro />
+      <div className="mt-16 lg:mt-32" />
+      <InfiniteMovingCards
+        direction="left"
+        speed="slow"
+        pauseOnHover={false}
+        items={skills}
+      />
+      <Experience />
       <About />
-      <TechStack />
-
-      <Projects />
-
-      <Navbar />
-      <BottomNav />
-    </div>
+      <Footer />
+    </TooltipProvider>
   );
 };
 

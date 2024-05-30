@@ -1,42 +1,77 @@
+import { Button, buttonVariants } from "@/components/ui/button";
+import { RxHamburgerMenu } from "react-icons/rx";
+import { useMediaQuery } from "usehooks-ts";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuSeparator,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
+import { downloadResume } from "@/lib/utils";
+
 const Header = () => {
+  const isDesktop = useMediaQuery("(min-width: 768px)");
   return (
-    <header
-      style={{
-        backgroundImage: `radial-gradient(
-            rgba(0, 0, 0, 0) 1px,
-            black 1px
-          )`,
-        backgroundSize: "4px 4px",
-      }}
-      className="sticky top-0 z-30 py-4 bg-black/20 backdrop-blur-sm"
-    >
-      <nav className="container flex items-center justify-between mx-auto">
+    <header className="sticky top-0 z-30 px-8 py-4 md:px-12 lg:px-32 bg-neutral-100/90">
+      <div className="flex justify-between mx-auto max-w-7xl">
         <a href="/" className="text-2xl font-bold">
           AC
         </a>
-        <ul className="flex">
-          <li className="hidden mx-4 sm:block">
-            <a href="#projects" className="hover:text-white">
-              Projects
-            </a>
-          </li>
-          <li className="hidden mx-4 sm:block">
-            <a href="#about" className="hover:text-white">
-              About
-            </a>
-          </li>
-          <li className="px-2 py-1 mx-4 font-semibold rounded cursor-pointer sm:p-0 sm:font-normal sm:bg-transparent bg-neutral-400/20">
-            <a
-              href="https://drive.google.com/uc?id=1h7DMUAKIDE2h-WL7pThFyHtROGJquVPU&export=download"
-              className="hover:text-white"
-              download
-            >
-              Resume
-            </a>
-          </li>
-        </ul>
-      </nav>
+        {isDesktop ? <WidescreenMenu /> : <HamburgerMenu />}
+      </div>
     </header>
+  );
+};
+
+const HamburgerMenu = () => {
+  return (
+    <DropdownMenu>
+      <DropdownMenuTrigger>
+        <RxHamburgerMenu size={24} />
+      </DropdownMenuTrigger>
+      <DropdownMenuContent>
+        <DropdownMenuItem>
+          <a href="#experience">
+            <span className="text-lg">Experience</span>
+          </a>
+        </DropdownMenuItem>
+        <DropdownMenuSeparator />
+        <DropdownMenuItem>
+          <span className="text-lg">About Me</span>
+        </DropdownMenuItem>
+        <DropdownMenuSeparator />
+        <DropdownMenuItem>
+          <span className="text-lg">Contact</span>
+        </DropdownMenuItem>
+        <DropdownMenuSeparator />
+        <DropdownMenuItem onClick={downloadResume}>
+          <span className="text-lg">Resume</span>
+        </DropdownMenuItem>
+      </DropdownMenuContent>
+    </DropdownMenu>
+  );
+};
+
+const WidescreenMenu = () => {
+  const linkButtonVariants = buttonVariants({ variant: "link", size: "sm" });
+  return (
+    <>
+      <nav>
+        <a className={linkButtonVariants} href="#experience">
+          <span className="text-lg">Experience</span>
+        </a>
+        <a className={linkButtonVariants} href="#about">
+          <span className="text-lg">About Me</span>
+        </a>
+        <a className={linkButtonVariants} href="#contact">
+          <span className="text-lg">Contact</span>
+        </a>
+      </nav>
+      <Button size="sm" onClick={downloadResume}>
+        <span>Resume</span>
+      </Button>
+    </>
   );
 };
 
