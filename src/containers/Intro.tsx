@@ -12,7 +12,7 @@ const Intro = () => {
           <h2 className="text-4xl md:text-7xl">
             <img
               src="https://robohash.org/placeholder.png"
-              className="-translate-x-12 lg:w-96"
+              className="w-56 -translate-x-8 lg:-translate-x-12 lg:w-80"
               alt="me"
             />
             Hi there!{" "}
@@ -23,7 +23,7 @@ const Intro = () => {
           <h2 className="text-2xl md:text-7xl">
             Software developer based in Bangalore, India
             <ImLocation
-              className="inline ml-2 fill-blue-500"
+              className="inline ml-2 fill-red-400"
               size={isDesktop ? 42 : 16}
             />
           </h2>
@@ -31,10 +31,12 @@ const Intro = () => {
             I specialize in building web applications.
           </p>
           <div className="space-x-4">
-            <Button className="space-x-2 peer">
-              <span>Lets Talk</span>
-              <FaLongArrowAltRight />
-            </Button>
+            <a
+              href="mailto:atul14.chauhan@outlook.com"
+              className={buttonVariants()}
+            >
+              Lets Talk
+            </a>
             <a
               className={buttonVariants({ variant: "outline" })}
               href="#experience"

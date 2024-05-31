@@ -13,7 +13,7 @@ import { downloadResume } from "@/lib/utils";
 const Header = () => {
   const isDesktop = useMediaQuery("(min-width: 768px)");
   return (
-    <header className="sticky top-0 z-30 px-8 py-4 md:px-12 lg:px-32 bg-neutral-100/90">
+    <header className="px-8 py-4 md:px-12 lg:px-32 bg-neutral-100/90">
       <div className="flex justify-between mx-auto max-w-7xl">
         <a href="/" className="text-2xl font-bold">
           AC
