@@ -38,11 +38,15 @@ const HamburgerMenu = () => {
         </DropdownMenuItem>
         <DropdownMenuSeparator />
         <DropdownMenuItem>
-          <span className="text-lg">About Me</span>
+          <a href="#about">
+            <span className="text-lg">About Me</span>
+          </a>
         </DropdownMenuItem>
         <DropdownMenuSeparator />
         <DropdownMenuItem>
-          <span className="text-lg">Contact</span>
+          <a href="#contact">
+            <span className="text-lg">Contact</span>
+          </a>
         </DropdownMenuItem>
         <DropdownMenuSeparator />
         <DropdownMenuItem onClick={downloadResume}>
