@@ -16,7 +16,7 @@ const Experience = () => {
       <div className="flex flex-col w-full gap-6 mx-auto max-w-7xl md:gap-0 md:flex-row">
         <section className="w-full md:space-y-6">
           <h4 className="text-4xl md:text-5xl">Work Experience</h4>
-          <div className="w-20 h-1 my-3 bg-neutral-900 dark:bg-neutral-50" />
+          <div className="w-20 h-1 my-3 bg-neutral-900" />
 
           <div className="flex flex-col gap-2 md:gap-6">
             <ExperienceCard
@@ -41,7 +41,7 @@ const Experience = () => {
         </section>
         <section className="w-full md:space-y-6">
           <h4 className="text-4xl md:text-5xl">Personal Projects</h4>
-          <div className="w-20 h-1 mb-2 bg-neutral-900" />
+          <div className="w-20 h-1 my-3 bg-neutral-900" />
           <div className="flex flex-col gap-2 md:gap-6">
             <ProjectCard
               title="QuickFill"
