@@ -46,7 +46,7 @@ const Experience = () => {
             <ProjectCard
               title="QuickFill"
               description="Chrome extension to quickly fill forms."
-              link="https://github.com/atulsmania/QuickFill"
+              link="https://github.com/atulsmania/quick-fill"
             />
 
             <ProjectCard
