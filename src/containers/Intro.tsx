@@ -1,5 +1,4 @@
-import { Button, buttonVariants } from "@/components/ui/button";
-import { FaLongArrowAltRight } from "react-icons/fa";
+import { buttonVariants } from "@/components/ui/button";
 import { ImLocation } from "react-icons/im";
 import { useMediaQuery } from "usehooks-ts";
 
