@@ -10,11 +10,13 @@ const Intro = () => {
       <div className="flex flex-col gap-6 mx-auto lg:flex-row flex-nowrap max-w-7xl">
         <div className="w-full space-y-6">
           <h2 className="text-4xl md:text-7xl">
-            <img
-              src="https://robohash.org/placeholder.png"
-              className="w-56 -translate-x-8 lg:-translate-x-12 lg:w-80"
-              alt="me"
-            />
+            <div className="w-56 -translate-x-8 aspect-square lg:-translate-x-12 lg:w-80">
+              <img
+                src="https://robohash.org/placeholder.png"
+                className="w-full"
+                alt="me"
+              />
+            </div>
             Hi there!{" "}
             <span className="whitespace-nowrap">I'm Atul Chauhan</span>
           </h2>
