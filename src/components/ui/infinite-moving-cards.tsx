@@ -1,11 +1,10 @@
-import { cn } from "@/lib/utils";
-import React, { useEffect, useState } from "react";
+import { addIdToCursor, cn, removeIdFromCursor } from "@/lib/utils";
+import React, { Fragment, useEffect, useState } from "react";
 
 export const InfiniteMovingCards = ({
   items,
   direction = "left",
   speed = "fast",
-  pauseOnHover = true,
   className,
 }: {
   items: string[];
@@ -64,10 +63,13 @@ export const InfiniteMovingCards = ({
     }
   };
   return (
-    <div
+    <section
+      id="my-skills"
+      onMouseEnter={() => addIdToCursor("my-skills")}
+      onMouseLeave={removeIdFromCursor}
       ref={containerRef}
       className={cn(
-        "scroller relative z-20 overflow-hidden bg-lime-300/60",
+        "scroller relative z-20 overflow-hidden bg-lime-300/60 dark:bg-neutral-900 border",
         "max-w-7xl mx-auto [mask-image:linear-gradient(to_right,transparent,white_20%,white_80%,transparent)]",
         className
       )}
@@ -76,22 +78,23 @@ export const InfiniteMovingCards = ({
         ref={scrollerRef}
         className={cn(
           "flex min-w-full shrink-0 py-4 w-max flex-nowrap items-center",
-          start && "animate-scroll",
-          pauseOnHover && "hover:[animation-play-state:paused]"
+          start && "animate-scroll"
         )}
       >
         {items.map((quote, idx) => (
-          <>
-            <li className="w-2 h-2 bg-black rounded-full" />
+          <Fragment key={idx}>
+            <li className="w-2 h-2 bg-black rounded-full dark:bg-neutral-50" />
             <li
               className="relative flex items-center flex-shrink-0 max-w-full px-8 font-medium w-fit"
               key={idx}
             >
-              <blockquote>{quote}</blockquote>
+              <blockquote className="text-xl font-medium text-neutral-900 dark:text-neutral-50">
+                {quote}
+              </blockquote>
             </li>
-          </>
+          </Fragment>
         ))}
       </ul>
-    </div>
+    </section>
   );
 };

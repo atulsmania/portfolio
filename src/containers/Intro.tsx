@@ -1,53 +1,45 @@
-import { buttonVariants } from "@/components/ui/button";
-import { ImLocation } from "react-icons/im";
-import { useMediaQuery } from "usehooks-ts";
+import { motion } from "framer-motion";
+import { addIdToCursor, removeIdFromCursor } from "@/lib/utils";
 
 const Intro = () => {
-  const isDesktop = useMediaQuery("(min-width: 768px)");
   return (
-    <section className="px-8 md:px-12 lg:px-32">
-      <div className="flex flex-col gap-6 mx-auto lg:flex-row flex-nowrap max-w-7xl">
-        <div className="w-full space-y-6">
-          <h2 className="text-4xl md:text-7xl">
-            <div className="w-56 -translate-x-8 aspect-square lg:-translate-x-12 lg:w-80">
-              <img
-                src="https://robohash.org/placeholder.png"
-                className="w-full"
-                alt="me"
-              />
-            </div>
-            Hi there!{" "}
-            <span className="whitespace-nowrap">I'm Atul Chauhan</span>
-          </h2>
-        </div>
-        <div className="flex flex-col justify-end w-full space-y-4 md:space-y-6">
-          <h2 className="text-2xl md:text-7xl">
-            Software developer based in Bangalore, India
-            <ImLocation
-              className="inline ml-2 fill-red-400"
-              size={isDesktop ? 42 : 16}
-            />
-          </h2>
-          <p className="text-sm md:text-3xl text-neutral-500">
-            I specialize in building web applications.
-          </p>
-          <div className="space-x-4">
-            <a
-              href="mailto:atul14.chauhan@outlook.com"
-              className={buttonVariants()}
-            >
-              Lets Talk
-            </a>
-            <a
-              className={buttonVariants({ variant: "outline" })}
-              href="#experience"
-            >
-              See my work
-            </a>
-          </div>
-        </div>
+    <section
+      onMouseEnter={() => addIdToCursor("hi-there")}
+      onMouseLeave={removeIdFromCursor}
+      className="mt-28"
+      id="hi there"
+    >
+      <div className="flex flex-col justify-end w-full space-y-4 md:space-y-6">
+        <h2 className="font-sans text-3xl font-bold md:text-8xl text-neutral-900 dark:text-neutral-50">
+          Hi, I'm Atul
+          <br />
+          I'm a &nbsp;
+          <span className="text-transparent bg-clip-text bg-gradient-to-r from-red-400 to-pink-500">
+            Frontend developer
+          </span>
+        </h2>
+        <span className="max-w-3xl font-mono text-xl text-neutral-500 dark:text-neutral-500">
+          <IconReveal>🚀</IconReveal> Bringing the precision of a three-pointer
+          to every line of code. Explore my portfolio and see how I turn ideas
+          into digital slam dunks!<IconReveal>&nbsp;🏀</IconReveal> Ready to
+          collaborate? Let’s talk!
+        </span>
       </div>
     </section>
+  );
+};
+
+const IconReveal = ({ children }: { children: React.ReactNode }) => {
+  return (
+    <motion.div
+      className="inline-block text-2xl"
+      initial={{ width: 0, opacity: 0 }}
+      animate={{ width: "fit-content", opacity: 1 }}
+      transition={{ duration: 1, ease: "easeInOut", delay: 0.5 }}
+      viewport={{ once: true }}
+    >
+      {children}
+    </motion.div>
   );
 };
 

@@ -5,3 +5,23 @@
 html {
   scroll-behavior: smooth;
 }
+
+.bg-light-mode {
+  @apply transition-colors duration-500 bg-neutral-50 text-neutral-800;
+}
+
+.bg-dark-mode {
+  @apply dark:bg-black dark:text-neutral-50;
+}
+
+html,
+* {
+  @media screen and (min-width: 768px) {
+    cursor: none !important;
+  }
+}
+
+.circular-text {
+  writing-mode: vertical-rl;
+  transform: rotate(180deg);
+}
