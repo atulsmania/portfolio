@@ -1,5 +1,4 @@
 import Section from "@/components/Section";
-import TextProgress from "@/components/ui/text.progress";
 
 const About = () => {
   return (
