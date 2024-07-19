@@ -13,7 +13,6 @@ const Cursor = () => {
   const isMobile = useMediaQuery("(max-width: 768px)");
   const axisX = useMotionValue(0);
   const axisY = useMotionValue(0);
-  const [hidden, setHidden] = useState(true);
 
   const [emoji, setEmoji] = useState<string>();
 
@@ -32,24 +31,10 @@ const Cursor = () => {
       setEmoji(sectionId as string);
     };
 
-    const onMouseLeave = () => {
-      setHidden(true);
-    };
-
-    const onMouseEnter = (e: MouseEvent) => {
-      axisX.set(e.clientX);
-      axisY.set(e.clientY);
-      setHidden(false);
-    };
-
     document.addEventListener("mousemove", onMouseMove);
-    document.addEventListener("mouseenter", onMouseEnter);
-    document.addEventListener("mouseleave", onMouseLeave);
 
     return () => {
       document.removeEventListener("mousemove", onMouseMove);
-      document.removeEventListener("mouseenter", onMouseEnter);
-      document.removeEventListener("mouseleave", onMouseLeave);
     };
   }, []);
 
@@ -62,8 +47,7 @@ const Cursor = () => {
       style={{ x: springX, y: springY }}
       className={clsx(
         "fixed z-50 w-6 h-6 rounded-full backdrop-invert shadow-sm pointer-events-none",
-        "dark:bg-white/50 bg-black/20 border border-neutral-200 dark:border-neutral-800",
-        { hidden: hidden }
+        "dark:bg-white/50 bg-black/20 border border-neutral-200 dark:border-neutral-800"
       )}
     >
       <AnimatePresence>
