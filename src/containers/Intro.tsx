@@ -6,19 +6,18 @@ const Intro = () => {
     <section
       onMouseEnter={() => addIdToCursor("hi-there")}
       onMouseLeave={removeIdFromCursor}
-      className="mt-28"
-      id="hi there"
+      className="pt-20 md:pt28"
+      id="intro"
     >
       <div className="flex flex-col justify-end w-full space-y-4 md:space-y-6">
-        <h2 className="font-sans text-3xl font-bold md:text-8xl text-neutral-900 dark:text-neutral-50">
+        <h2 className="font-sans text-4xl font-bold md:text-8xl text-neutral-900 dark:text-neutral-50">
           Hi, I'm Atul
           <br />
-          I'm a &nbsp;
           <span className="text-transparent bg-clip-text bg-gradient-to-r from-red-400 to-pink-500">
             Frontend developer
           </span>
         </h2>
-        <span className="max-w-3xl font-mono text-xl text-neutral-500 dark:text-neutral-500">
+        <span className="max-w-4xl text-base md:text-2xl text-neutral-500 dark:text-neutral-500">
           <IconReveal>🚀</IconReveal> Bringing the precision of a three-pointer
           to every line of code. Explore my portfolio and see how I turn ideas
           into digital slam dunks!<IconReveal>&nbsp;🏀</IconReveal> Ready to

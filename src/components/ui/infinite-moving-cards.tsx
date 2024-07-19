@@ -69,7 +69,7 @@ export const InfiniteMovingCards = ({
       onMouseLeave={removeIdFromCursor}
       ref={containerRef}
       className={cn(
-        "scroller relative z-20 overflow-hidden bg-lime-300/60 dark:bg-neutral-900 border",
+        "scroller relative z-20 overflow-hidden bg-lime-300/60 dark:bg-neutral-900 dark:border-neutral-800 border",
         "max-w-7xl mx-auto [mask-image:linear-gradient(to_right,transparent,white_20%,white_80%,transparent)]",
         className
       )}
@@ -83,12 +83,12 @@ export const InfiniteMovingCards = ({
       >
         {items.map((quote, idx) => (
           <Fragment key={idx}>
-            <li className="w-2 h-2 bg-black rounded-full dark:bg-neutral-50" />
+            <li className="w-2 h-2 bg-black rounded-full dark:bg-neutral-400" />
             <li
-              className="relative flex items-center flex-shrink-0 max-w-full px-8 font-medium w-fit"
+              className="relative flex items-center flex-shrink-0 max-w-full px-8 w-fit"
               key={idx}
             >
-              <blockquote className="text-xl font-medium text-neutral-900 dark:text-neutral-50">
+              <blockquote className="text-sm font-light md:font-medium md:text-xl text-neutral-900 dark:text-neutral-400">
                 {quote}
               </blockquote>
             </li>

@@ -1,5 +1,4 @@
 import { type ClassValue, clsx } from "clsx";
-import { stringify } from "querystring";
 import { twMerge } from "tailwind-merge";
 
 export function cn(...inputs: ClassValue[]) {
@@ -7,8 +6,6 @@ export function cn(...inputs: ClassValue[]) {
 }
 
 export const skills = [
-  "HTML",
-  "CSS",
   "JavaScript",
   "TypeScript",
   "React",

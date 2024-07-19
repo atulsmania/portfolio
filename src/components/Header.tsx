@@ -5,7 +5,6 @@ import { toggleDarkMode } from "@/lib/utils";
 import { MdOutlineLightMode } from "react-icons/md";
 import { MdDarkMode } from "react-icons/md";
 import { useState } from "react";
-import Link from "./ui/link";
 import { ImLocation } from "react-icons/im";
 
 const Toggler = () => {
@@ -25,12 +24,6 @@ const Toggler = () => {
 };
 
 const Header = () => {
-  const indiaDate = new Date().toLocaleDateString("en-US", {
-    timeZone: "Asia/Kolkata",
-    month: "long",
-    day: "numeric",
-  });
-
   const indiaTime = new Date().toLocaleTimeString("en-US", {
     timeZone: "Asia/Kolkata",
     hour: "numeric",
@@ -45,38 +38,9 @@ const Header = () => {
           <span className="text-md">India</span>
           <ImLocation size={18} className="inline fill-red-400" />
         </div>
-        <Menu />
         <Toggler />
       </div>
     </header>
-  );
-};
-
-const Menu = () => {
-  const [hoveredCell, setHoveredCell] = useState<number | null>(null);
-  const isMobile = useMediaQuery("(max-width: 768px)");
-
-  if (isMobile) {
-    return null;
-  }
-
-  return (
-    <nav className="flex items-center">
-      {["#home", "#about", "#contact"].map((link, i) => (
-        <Link
-          key={link}
-          href={link}
-          tileIndex={i}
-          hoveredCell={hoveredCell}
-          layoutId="header-tabs"
-          className="px-1 border-black md:px-3"
-          onMouseEnter={() => setHoveredCell(i)}
-          onMouseLeave={() => setHoveredCell(null)}
-        >
-          {link}
-        </Link>
-      ))}
-    </nav>
   );
 };
 

@@ -26,7 +26,6 @@ const Cursor = () => {
 
       const portalCursor = document.getElementById("portal-cursor");
       if (!portalCursor) return;
-      console.log(portalCursor.getAttribute("data-section"));
       const sectionId = portalCursor.getAttribute("data-section");
       setEmoji(sectionId as string);
     };
