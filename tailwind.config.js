@@ -16,6 +16,12 @@ module.exports = {
       },
     },
     extend: {
+      backgroundImage: {
+        "light-grid":
+          "linear-gradient(90deg, rgba(255,255,255,0.5) 1px, transparent 1px), linear-gradient(180deg, rgba(255,255,255,0.5) 1px, transparent 1px)",
+        "dark-grid":
+          "linear-gradient(90deg, rgba(0,0,0,0.2) 1px, transparent 1px), linear-gradient(180deg, rgba(0,0,0,0.2) 1px, transparent 1px)",
+      },
       keyframes: {
         scroll: {
           to: {

@@ -9,6 +9,7 @@ import { Analytics } from "@vercel/analytics/react";
 import { Fragment, useLayoutEffect } from "react";
 import Projects from "./containers/Projects";
 import Cursor from "./components/ui/cursor";
+import ParallaxBackground from "./components/ui/parallax-background";
 
 const App = () => {
   useLayoutEffect(() => {
@@ -22,6 +23,7 @@ const App = () => {
           <Cursor />
           <Header />
           <Intro />
+          <ParallaxBackground />
           <InfiniteMovingCards
             direction="left"
             speed="slow"
