@@ -1,6 +1,7 @@
 import { useMotionValue, motion, useSpring, useTransform } from "framer-motion";
 import { MouseEvent, useRef } from "react";
 import { FiArrowRight } from "react-icons/fi";
+import TextProgress from "./text-progress";
 
 type Props = {
   heading: string;
@@ -50,7 +51,7 @@ const Link = ({ heading, imgSrc, subheading, href }: Props) => {
     >
       <div>
         <span className="relative z-10 block text-4xl font-bold transition-colors duration-500 text-neutral-500 dark:group-hover:text-neutral-50 group-hover:text-neutral-900 md:text-6xl">
-          <span className="inline-block">{heading}</span>
+          <TextProgress>{heading}</TextProgress>
         </span>
         <span className="relative z-10 block mt-2 text-base transition-colors duration-500 text-neutral-500 dark:group-hover:text-neutral-50 group-hover:text-neutral-900">
           {subheading}
