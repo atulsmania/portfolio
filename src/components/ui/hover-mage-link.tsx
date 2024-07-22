@@ -1,7 +1,15 @@
-import { useMotionValue, motion, useSpring, useTransform } from "framer-motion";
-import { MouseEvent, useRef } from "react";
+import {
+  useMotionValue,
+  motion,
+  useSpring,
+  useTransform,
+  useScroll,
+  useMotionValueEvent,
+} from "framer-motion";
+import { MouseEvent, useRef, useState } from "react";
 import { FiArrowRight } from "react-icons/fi";
-import TextProgress from "./text-progress";
+import { cn } from "@/lib/utils";
+import { useMediaQuery } from "usehooks-ts";
 
 type Props = {
   heading: string;
@@ -12,6 +20,23 @@ type Props = {
 
 const Link = ({ heading, imgSrc, subheading, href }: Props) => {
   const ref = useRef<HTMLAnchorElement>(null);
+  const isMobile = useMediaQuery("(max-width: 768px)");
+  const [centered, setCentered] = useState(false);
+
+  const { scrollYProgress } = useScroll({
+    axis: "y",
+    target: ref,
+    offset: ["start center", "end center"],
+  });
+
+  useMotionValueEvent(scrollYProgress, "change", (latest) => {
+    if (!isMobile) return;
+    if (latest > 0 && latest < 1) {
+      setCentered(true);
+    } else {
+      setCentered(false);
+    }
+  });
 
   const x = useMotionValue(0);
   const y = useMotionValue(0);
@@ -50,10 +75,20 @@ const Link = ({ heading, imgSrc, subheading, href }: Props) => {
       className="relative flex items-center justify-between py-4 transition-colors duration-500 border-b-2 group border-neutral-700 dark:hover:border-neutral-50 hover:border-neutral-900 md:py-8"
     >
       <div>
-        <span className="relative z-10 block text-4xl font-bold transition-colors duration-500 text-neutral-500 dark:group-hover:text-neutral-50 group-hover:text-neutral-900 md:text-6xl">
-          <TextProgress>{heading}</TextProgress>
+        <span
+          className={cn(
+            "relative z-10 block text-5xl font-bold transition-colors duration-500 text-neutral-500 dark:text-neutral-400 dark:group-hover:text-neutral-50 group-hover:text-neutral-900 md:text-7xl",
+            { "text-neutral-900 dark:text-neutral-50": centered }
+          )}
+        >
+          {heading}
         </span>
-        <span className="relative z-10 block mt-2 text-base transition-colors duration-500 text-neutral-500 dark:group-hover:text-neutral-50 group-hover:text-neutral-900">
+        <span
+          className={cn(
+            "relative z-10 block mt-2 text-base transition-colors duration-500 text-neutral-500 dark:text-neutral-400 dark:group-hover:text-neutral-50 group-hover:text-neutral-900",
+            { "text-neutral-900 dark:text-neutral-50": centered }
+          )}
+        >
           {subheading}
         </span>
       </div>
@@ -86,6 +121,7 @@ const Link = ({ heading, imgSrc, subheading, href }: Props) => {
             opacity: 1,
           },
         }}
+        animate={centered ? "whileHover" : undefined}
         transition={{ type: "spring" }}
         className="relative z-10 p-4"
       >

@@ -1,5 +1,5 @@
-import { addIdToCursor, cn, removeIdFromCursor } from "@/lib/utils";
 import React, { Fragment, useEffect, useState } from "react";
+import { cn } from "@/lib/utils";
 
 export const InfiniteMovingCards = ({
   items,
@@ -64,13 +64,10 @@ export const InfiniteMovingCards = ({
   };
   return (
     <section
-      id="my-skills"
-      onMouseEnter={() => addIdToCursor("my-skills")}
-      onMouseLeave={removeIdFromCursor}
       ref={containerRef}
       className={cn(
         "scroller relative z-20 overflow-hidden bg-lime-300/60 dark:bg-neutral-900 dark:border-neutral-800 border",
-        "max-w-7xl mx-auto [mask-image:linear-gradient(to_right,transparent,white_20%,white_80%,transparent)]",
+        "max-w-7xl mx-auto md:[mask-image:linear-gradient(to_right,transparent,white_20%,white_80%,transparent)]",
         className
       )}
     >

@@ -1,27 +1,27 @@
-import { addIdToCursor, cn, removeIdFromCursor } from "@/lib/utils";
-import React, { ComponentProps } from "react";
+import { cn } from "@/lib/utils";
+import { ComponentProps } from "react";
 
 type SectionProps = {
   title?: string;
   id: string;
+  separator?: boolean;
 } & ComponentProps<"section">;
 
 const Section = (props: SectionProps) => {
-  const { children, title, className, ...rest } = props;
+  const { children, title, className, separator = true, ...rest } = props;
 
   return (
     <section
-      onMouseEnter={() => addIdToCursor(props.id)}
-      onMouseLeave={removeIdFromCursor}
-      className={cn("w-full", className)}
+      className={cn(
+        "w-full flex flex-col justify-center items-center min-h-screen",
+        className
+      )}
       {...rest}
     >
-      <div className="flex flex-col w-full gap-6 mx-auto max-w-7xl md:gap-0 md:flex-row">
-        <div className="w-full md:space-y-6">
-          <div className="w-10 h-[2px] my-3 bg-neutral-900 dark:bg-neutral-50 rounded-full" />
-          <div className="flex flex-col gap-2 md:gap-6">{children}</div>
-        </div>
-      </div>
+      {separator && (
+        <div className="self-start w-10 h-[2px] my-3 bg-neutral-900 dark:bg-neutral-50 rounded-full md:mb-6" />
+      )}
+      <div className="w-full">{children}</div>
     </section>
   );
 };

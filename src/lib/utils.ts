@@ -33,11 +33,3 @@ export const toggleDarkMode = () => {
   document.documentElement.classList.remove(currentTheme);
   document.documentElement.classList.add(newTheme);
 };
-
-export const addIdToCursor = (id: string) => {
-  document.getElementById("portal-cursor")?.setAttribute("data-section", id);
-};
-
-export const removeIdFromCursor = () => {
-  document.getElementById("portal-cursor")?.removeAttribute("data-section");
-};

@@ -9,10 +9,11 @@ import { useEffect, useState } from "react";
 import { createPortal } from "react-dom";
 import { useMediaQuery } from "usehooks-ts";
 
+const cursorSize = 24;
 const Cursor = () => {
   const isMobile = useMediaQuery("(max-width: 768px)");
-  const axisX = useMotionValue(0);
-  const axisY = useMotionValue(0);
+  const axisX = useMotionValue(-cursorSize);
+  const axisY = useMotionValue(-cursorSize);
 
   const [emoji, setEmoji] = useState<string>();
 
@@ -21,8 +22,8 @@ const Cursor = () => {
 
   useEffect(() => {
     const onMouseMove = (e: MouseEvent) => {
-      axisX.set(e.clientX - 12);
-      axisY.set(e.clientY - 12);
+      axisX.set(e.clientX - cursorSize / 2);
+      axisY.set(e.clientY - cursorSize / 2);
 
       const portalCursor = document.getElementById("portal-cursor");
       if (!portalCursor) return;
@@ -43,10 +44,10 @@ const Cursor = () => {
 
   return (
     <motion.div
-      style={{ x: springX, y: springY }}
+      style={{ x: springX, y: springY, width: cursorSize, height: cursorSize }}
       className={clsx(
-        "fixed z-50 w-6 h-6 rounded-full backdrop-invert shadow-sm pointer-events-none",
-        "dark:bg-white/50 bg-black/20 border border-neutral-200 dark:border-neutral-800"
+        "fixed z-50 rounded-full shadow-sm pointer-events-none ",
+        "dark:bg-white/50 bg-black/20 border border-neutral-400 dark:border-neutral-800"
       )}
     >
       <AnimatePresence>

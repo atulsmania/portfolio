@@ -14,14 +14,29 @@ html {
   @apply dark:bg-black dark:text-neutral-50;
 }
 
-html,
-* {
-  @media screen and (min-width: 768px) {
-    cursor: none !important;
-  }
-}
-
 .circular-text {
   writing-mode: vertical-rl;
   transform: rotate(180deg);
+}
+
+/* lenis */
+html.lenis,
+html.lenis body {
+  height: auto;
+}
+
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+
+.lenis.lenis-smooth iframe {
+  pointer-events: none;
 }
