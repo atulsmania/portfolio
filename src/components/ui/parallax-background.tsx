@@ -21,7 +21,7 @@ const ParallaxBackground = () => {
         backgroundSize: `${blockSize}px ${blockSize}px`,
         backgroundPosition: position,
       }}
-      className="fixed inset-0 w-full h-4/5 overflow-hidden dark:bg-light-grid bg-dark-grid -z-10 [mask-image:linear-gradient(0deg,transparent,rgba(0,0,0,.5),#000)]"
+      className="fixed left-0 top-0 w-full h-4/5 overflow-hidden dark:bg-light-grid bg-dark-grid -z-10 [mask-image:linear-gradient(0deg,transparent,rgba(0,0,0,.5),#000)]"
     />
   );
 };

@@ -13,7 +13,7 @@ const Section = (props: SectionProps) => {
   return (
     <section
       className={cn(
-        "w-full flex flex-col justify-center items-center min-h-screen",
+        "w-full flex flex-col justify-center items-center min-h-screen min-h-svh",
         className
       )}
       {...rest}

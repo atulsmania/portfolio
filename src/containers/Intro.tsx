@@ -22,7 +22,7 @@ const Intro = () => {
     <Section
       id="intro"
       separator={false}
-      className="!min-h-[calc(100vh-56px)] pb-10 justify-end"
+      className="!min-h-[calc(100svh-56px)] pb-10 justify-end"
     >
       <motion.div
         variants={variants}
