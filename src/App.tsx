@@ -34,7 +34,7 @@ const App = () => {
       <TooltipProvider>
         <ParallaxBackground />
         <Cursor />
-        <main className="w-full mx-auto max-w-7xl">
+        <main className="w-full px-2 mx-auto max-w-7xl">
           <Header />
           <Intro />
           <Projects />

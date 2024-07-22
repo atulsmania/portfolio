@@ -54,7 +54,7 @@ const Link = ({ heading, imgSrc, subheading, href }: Props) => {
       ref={ref}
       initial="initial"
       whileHover="whileHover"
-      className="relative flex items-center justify-between py-4 overflow-x-hidden transition-colors duration-500 border-b-2 group border-neutral-700 dark:hover:border-neutral-50 hover:border-neutral-900 md:py-8 md:overflow-auto"
+      className="relative flex items-center justify-between py-4 overflow-x-hidden transition-colors duration-500 border-b-2 group border-neutral-700 dark:hover:border-neutral-50 hover:border-neutral-900 md:py-8 md:overflow-x-visible"
     >
       <div>
         <span
