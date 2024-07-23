@@ -34,14 +34,14 @@ const App = () => {
       <TooltipProvider>
         <ParallaxBackground />
         <Cursor />
-        <main className="w-full px-2 mx-auto max-w-7xl">
-          <Header />
+        <Header />
+        <main className="w-full px-2 mx-auto space-y-20 max-w-7xl">
           <Intro />
           <Projects />
           <About />
           <Contact />
-          <Footer />
         </main>
+        <Footer />
       </TooltipProvider>
       <Analytics />
     </Fragment>
