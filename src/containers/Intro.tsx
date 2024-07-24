@@ -13,7 +13,7 @@ const Intro = () => {
       opacity: 1,
       transition: {
         delay: 0.5,
-        duration: 1,
+        duration: 0.5,
         staggerChildren: 0.25,
       },
     },
@@ -23,7 +23,7 @@ const Intro = () => {
     <Section
       id="intro"
       separator={false}
-      className="!min-h-[calc(100svh-180px)] pb-4 justify-end"
+      className="!min-h-[calc(100svh-100px)] pb-4 justify-end"
     >
       <motion.div
         variants={variants}

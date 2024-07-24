@@ -37,15 +37,15 @@ const ExperienceCard = (props: ExperienceCardProps) => {
   const { designation, domain, duration, organization } = props;
 
   return (
-    <div className="flex items-center py-6 group">
-      <div className="ml-4 transition-colors duration-500 text-neutral-500 group-hover:text-neutral-50">
-        <h2 className="font-bold md:text-6xl">
-          <span className="font-bold">{organization}</span>
-        </h2>
-        <p className="md:text-lg">
-          {duration.from} - {duration.to}
-        </p>
-      </div>
+    <div className="flex items-center gap-4 py-8 ml-4 transition-colors duration-500 border-b-2 group">
+      <h2 className="text-4xl font-bold md:text-7xl dark:text-neutral-200">
+        <span>{organization}</span>
+      </h2>
+
+      <span className="block w-12 h-1 transition-transform duration-700 origin-left bg-white rounded-full group-hover:scale-x-150" />
+      <p className="relative transition-all duration-700 md:text-lg group-hover:translate-x-8">
+        {duration.from} - {duration.to}
+      </p>
     </div>
   );
 };

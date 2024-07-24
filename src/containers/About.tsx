@@ -11,14 +11,14 @@ const About = () => {
   const target = useRef<HTMLDivElement>(null);
   const { scrollYProgress } = useScroll({
     target,
-    offset: ["0.5 end", "0.2 start"],
+    offset: ["0.2 0.9", "0.2 0.2"],
   });
 
   return (
     <Section id="about" title="About">
       <p
         ref={target}
-        className="text-2xl items-start flex flex-wrap min-h-[calc(100vh/1.5)] font-medium md:text-5xl md:font-medium text-neutral-900 dark:text-neutral-400"
+        className="flex flex-wrap items-start text-2xl font-light md:text-6xl md:font-light text-neutral-900 dark:text-neutral-400"
       >
         {words.map((word, index) => {
           const start = index / words.length;

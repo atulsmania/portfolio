@@ -7,32 +7,24 @@ type SectionProps = {
   id: string;
   children: React.ReactNode;
   separator?: boolean;
-} & ComponentProps<typeof motion.section>;
+} & ComponentProps<"section">;
 
 const Section = (props: SectionProps) => {
   const { children, title, className, separator = true, ...rest } = props;
 
   return (
-    <motion.section
+    <section
       className={cn(
         "w-full flex flex-col justify-center items-center",
         className
       )}
-      initial={{ opacity: 0, y: 20 }}
-      whileInView={{
-        opacity: 1,
-        y: 0,
-        transition: { duration: 0.5 },
-      }}
-      viewport={{ amount: 0.15 }}
-      exit={{ opacity: 0, y: -20 }}
       {...rest}
     >
       {separator && (
         <div className="self-start w-10 h-[2px] my-3 bg-neutral-900 dark:bg-neutral-50 rounded-full md:mb-6" />
       )}
       <div className="w-full">{children}</div>
-    </motion.section>
+    </section>
   );
 };
 
