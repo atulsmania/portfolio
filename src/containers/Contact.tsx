@@ -1,7 +1,5 @@
 import Section from "@/components/Section";
 import TextProgress from "@/components/ui/text-progress";
-import { handleCursorEvents } from "@/lib/utils";
-import { useEffect, useRef } from "react";
 
 const contact = [
   { link: "https://www.linkedin.com/in/chauhan-atul/", title: "LinkedIn" },
