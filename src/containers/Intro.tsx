@@ -1,7 +1,6 @@
 import { motion } from "framer-motion";
 import Skills from "./Skills";
 import Section from "@/components/Section";
-import { IoIosArrowRoundForward } from "react-icons/io";
 
 const Intro = () => {
   const variants = {

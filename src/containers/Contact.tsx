@@ -17,7 +17,7 @@ const Contact = () => {
     <Section id="contact" title="Contact">
       <div className="flex flex-col justify-between text-6xl font-bold md:text-8xl dark:text-neutral-300">
         {contact.map(({ link, title }, i) => (
-          <a href={link} target="_blank">
+          <a href={link} target="_blank" className="w-fit">
             <TextProgress key={i}>{title}</TextProgress>
           </a>
         ))}

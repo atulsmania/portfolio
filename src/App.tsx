@@ -11,9 +11,6 @@ import Cursor from "./components/ui/cursor";
 import ParallaxBackground from "./components/ui/parallax-background";
 import Lenis from "lenis";
 import Contact from "./containers/Contact";
-import ShrinkableCard from "./components/ui/shrinkable-card";
-import Section from "./components/Section";
-import Skills from "./containers/Skills";
 
 const App = () => {
   useLayoutEffect(() => {

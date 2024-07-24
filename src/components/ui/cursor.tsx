@@ -1,24 +1,26 @@
-import clsx from "clsx";
-import {
-  AnimatePresence,
-  motion,
-  useMotionValue,
-  useSpring,
-} from "framer-motion";
-import { useEffect, useState } from "react";
+import { cn } from "@/lib/utils";
+import { motion, useMotionValue, useSpring } from "framer-motion";
+import { useEffect } from "react";
 import { createPortal } from "react-dom";
 import { useMediaQuery } from "usehooks-ts";
 
-const cursorSize = 24;
+export const cursorStyles = {
+  link: "link",
+  default: "default",
+} as const;
+
+const cursorSize = 32;
+
 const Cursor = () => {
+  const scale = useMotionValue(1);
+
   const isMobile = useMediaQuery("(max-width: 768px)");
   const axisX = useMotionValue(-cursorSize);
   const axisY = useMotionValue(-cursorSize);
 
-  const [emoji, setEmoji] = useState<string>();
-
   const springX = useSpring(axisX, { damping: 80, stiffness: 1000 });
   const springY = useSpring(axisY, { damping: 80, stiffness: 1000 });
+  const springScale = useSpring(scale, { damping: 80, stiffness: 1000 });
 
   useEffect(() => {
     const onMouseMove = (e: MouseEvent) => {
@@ -27,8 +29,9 @@ const Cursor = () => {
 
       const portalCursor = document.getElementById("portal-cursor");
       if (!portalCursor) return;
-      const sectionId = portalCursor.getAttribute("data-section");
-      setEmoji(sectionId as string);
+      const type = portalCursor.getAttribute("data-cursor");
+      const scaleValue = type === "link" ? 2.5 : 1;
+      scale.set(scaleValue);
     };
 
     document.addEventListener("mousemove", onMouseMove);
@@ -44,28 +47,18 @@ const Cursor = () => {
 
   return (
     <motion.div
-      style={{ x: springX, y: springY, width: cursorSize, height: cursorSize }}
-      className={clsx(
-        "fixed z-50 rounded-full shadow-sm pointer-events-none ",
-        "dark:bg-white/50 bg-black/20 border border-neutral-400 dark:border-neutral-800"
+      style={{
+        x: springX,
+        y: springY,
+        width: cursorSize,
+        height: cursorSize,
+        scale: springScale,
+      }}
+      className={cn(
+        "fixed z-50 rounded-full shadow-sm pointer-events-none",
+        "bg-black dark:bg-black backdrop-invert mix-blend-difference"
       )}
-    >
-      <AnimatePresence>
-        {!!emoji && (
-          <motion.span
-            initial={{ opacity: 0 }}
-            animate={{
-              opacity: 1,
-              transition: { duration: 0.5 },
-            }}
-            exit={{ opacity: 0, transition: { duration: 0.5 } }}
-            className="relative px-3 py-2 text-xl dark:bg-neutral-50 whitespace-nowrap dark:text-neutral-950 left-5 top-5 rounded-3xl bg-neutral-900 text-neutral-50"
-          >
-            {emoji.replace(/-/g, " ")}
-          </motion.span>
-        )}
-      </AnimatePresence>
-    </motion.div>
+    />
   );
 };
 
