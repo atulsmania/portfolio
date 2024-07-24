@@ -5,7 +5,7 @@ const TextProgress = ({ children }: PropsWithChildren) => {
   const ref = useRef<HTMLSpanElement>(null);
   const { scrollYProgress } = useScroll({
     target: ref,
-    offset: ["end end", "end center"],
+    offset: ["end end", "end 0.7"],
   });
   const scaleX = useTransform(scrollYProgress, [0, 1], [1, 0]);
 
