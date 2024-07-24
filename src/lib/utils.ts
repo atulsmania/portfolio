@@ -42,7 +42,7 @@ export const setCursorType = (cursorStyle: keyof typeof cursorStyles) => {
     .setAttribute("data-cursor", cursorStyle);
 };
 
-export const handleCursorEvents = (ref: RefObject<HTMLDivElement>) => {
+export const handleCursorEvents = (ref: RefObject<HTMLUnknownElement>) => {
   if (!ref.current) return () => null;
   const onMouseEnter = () => {
     setCursorType("link");

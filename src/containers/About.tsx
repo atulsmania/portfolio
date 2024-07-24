@@ -18,7 +18,7 @@ const About = () => {
     <Section id="about" title="About">
       <p
         ref={target}
-        className="text-2xl flex flex-wrap min-h-[calc(100vh/1.5)] font-medium md:text-5xl md:font-medium text-neutral-900 dark:text-neutral-400"
+        className="text-2xl items-start flex flex-wrap min-h-[calc(100vh/1.5)] font-medium md:text-5xl md:font-medium text-neutral-900 dark:text-neutral-400"
       >
         {words.map((word, index) => {
           const start = index / words.length;
@@ -47,11 +47,11 @@ const Word = ({
   const opacity = useTransform(progress, range, [0, 1]);
 
   return (
-    <span className="relative mr-2 text-neutral-900 dark:text-neutral-50">
+    <span className="relative mr-2 h-fit text-neutral-900 dark:text-neutral-50">
       <span className="absolute opacity-25">{children}</span>
       <motion.span
         style={{ opacity: opacity }}
-        className="text-neutral-900 dark:text-neutral-400"
+        className="text-neutral-900 h-fit dark:text-neutral-400"
         transition={{ duration: 0.5, ease: "easeInOut" }}
       >
         {children}
