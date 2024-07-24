@@ -32,7 +32,7 @@ const App = () => {
         <ParallaxBackground />
         <Cursor />
         <Header />
-        <main className="w-full px-2 mx-auto space-y-20 max-w-7xl">
+        <main className="w-full px-2 mx-auto space-y-20 font-body max-w-7xl">
           <Intro />
           <Projects />
           <About />
