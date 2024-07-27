@@ -1,6 +1,5 @@
 import Header from "@/components/Header";
 import Intro from "@/containers/Intro";
-import { TooltipProvider } from "@/components/ui/tooltip";
 import { setCurrentTheme } from "@/lib/utils";
 import Footer from "@/components/Footer";
 import About from "@/containers/About";
@@ -28,18 +27,16 @@ const App = () => {
 
   return (
     <Fragment>
-      <TooltipProvider>
-        <ParallaxBackground />
-        <Cursor />
-        <Header />
-        <main className="w-full px-2 mx-auto space-y-20 font-body max-w-7xl">
-          <Intro />
-          <Projects />
-          <About />
-          <Contact />
-        </main>
-        <Footer />
-      </TooltipProvider>
+      <ParallaxBackground />
+      <Cursor />
+      <Header />
+      <main className="w-full px-2 mx-auto space-y-20 font-body max-w-7xl">
+        <Intro />
+        <Projects />
+        <About />
+        <Contact />
+      </main>
+      <Footer />
       <Analytics />
     </Fragment>
   );
