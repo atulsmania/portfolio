@@ -61,7 +61,10 @@ const Intro = () => {
           🚀 Bringing the precision of a three-pointer to every line of code.
           Explore my portfolio and see how I turn ideas into digital slam dunks!
           🏀 Ready to collaborate? &nbsp;
-          <a ref={ref} className="relative text-neutral-200 group">
+          <a
+            ref={ref}
+            className="relative dark:text-neutral-200 text-neutral-900 group"
+          >
             Let’s talk!
             <span className="absolute inset-x-0 bottom-0 h-1 transition-transform duration-500 origin-right scale-x-0 group-hover:origin-left bg-gradient-to-r from-red-400 to-pink-500 group-hover:scale-x-100" />
           </a>
