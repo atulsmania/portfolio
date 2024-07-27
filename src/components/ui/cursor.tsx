@@ -55,7 +55,7 @@ const Cursor = () => {
         scale: springScale,
       }}
       className={cn(
-        "fixed z-50 rounded-full shadow-sm pointer-events-none",
+        "transform-z-0 fixed z-50 rounded-full shadow-sm pointer-events-none",
         "bg-black dark:bg-black backdrop-invert mix-blend-difference"
       )}
     />

@@ -6,9 +6,9 @@ import {
   useScroll,
   useMotionValueEvent,
 } from "framer-motion";
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { FiArrowRight } from "react-icons/fi";
-import { cn } from "@/lib/utils";
+import { cn, handleCursorEvents } from "@/lib/utils";
 import { useMediaQuery } from "usehooks-ts";
 
 type Props = {
@@ -46,6 +46,11 @@ const Link = ({ heading, imgSrc, subheading, href }: Props) => {
 
   const top = useTransform(mouseYSpring, [0.5, -0.5], ["40%", "60%"]);
   const left = useTransform(mouseXSpring, [0.5, -0.5], ["60%", "70%"]);
+
+  useEffect(() => {
+    const unsubscribe = handleCursorEvents(ref);
+    return () => unsubscribe();
+  }, []);
 
   return (
     <motion.a

@@ -1,8 +1,17 @@
 import { motion } from "framer-motion";
 import Skills from "./Skills";
 import Section from "@/components/Section";
+import { useEffect, useRef } from "react";
+import { handleCursorEvents } from "@/lib/utils";
 
 const Intro = () => {
+  const ref = useRef<HTMLAnchorElement>(null);
+
+  useEffect(() => {
+    const unsubscribe = handleCursorEvents(ref);
+    return () => unsubscribe();
+  }, []);
+
   const variants = {
     initial: {
       opacity: 0,
@@ -51,7 +60,11 @@ const Intro = () => {
         >
           🚀 Bringing the precision of a three-pointer to every line of code.
           Explore my portfolio and see how I turn ideas into digital slam dunks!
-          🏀 Ready to collaborate? Let’s talk!
+          🏀 Ready to collaborate? &nbsp;
+          <a ref={ref} className="relative text-neutral-200 group">
+            Let’s talk!
+            <span className="absolute inset-x-0 bottom-0 h-1 transition-transform duration-500 origin-right scale-x-0 group-hover:origin-left bg-gradient-to-r from-red-400 to-pink-500 group-hover:scale-x-100" />
+          </a>
         </motion.span>
       </motion.div>
       <Skills />
