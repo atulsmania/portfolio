@@ -21,7 +21,7 @@ const Section = (props: SectionProps) => {
       {...rest}
     >
       {separator && (
-        <div className="self-start w-10 h-[2px] my-3 bg-neutral-900 dark:bg-neutral-50 rounded-full md:mb-6" />
+        <div className="self-start w-10 h-[2px] my-12 bg-neutral-900 dark:bg-neutral-50 rounded-full md:mb-6" />
       )}
       <div className="w-full">{children}</div>
     </section>

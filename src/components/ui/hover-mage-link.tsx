@@ -6,9 +6,9 @@ import {
   useScroll,
   useMotionValueEvent,
 } from "framer-motion";
-import { useEffect, useRef, useState } from "react";
+import { useRef, useState } from "react";
 import { FiArrowRight } from "react-icons/fi";
-import { cn, handleCursorEvents } from "@/lib/utils";
+import { cn } from "@/lib/utils";
 import { useMediaQuery } from "usehooks-ts";
 
 type Props = {
@@ -19,13 +19,13 @@ type Props = {
 };
 
 const Link = ({ heading, imgSrc, subheading, href }: Props) => {
-  const ref = useRef<HTMLAnchorElement>(null);
+  const elementRef = useRef<HTMLAnchorElement>(null);
   const isMobile = useMediaQuery("(max-width: 768px)");
   const [centered, setCentered] = useState(false);
 
   const { scrollYProgress } = useScroll({
     axis: "y",
-    target: ref,
+    target: elementRef,
     offset: ["start center", "end center"],
   });
 
@@ -47,16 +47,11 @@ const Link = ({ heading, imgSrc, subheading, href }: Props) => {
   const top = useTransform(mouseYSpring, [0.5, -0.5], ["40%", "60%"]);
   const left = useTransform(mouseXSpring, [0.5, -0.5], ["60%", "70%"]);
 
-  useEffect(() => {
-    const unsubscribe = handleCursorEvents(ref);
-    return () => unsubscribe();
-  }, []);
-
   return (
     <motion.a
       href={href}
       target="_blank"
-      ref={ref}
+      ref={elementRef}
       initial="initial"
       whileHover="whileHover"
       className="relative flex items-center justify-between py-4 overflow-x-hidden transition-colors duration-500 border-b-2 group border-neutral-700 dark:hover:border-neutral-50 hover:border-neutral-900 md:py-8 md:overflow-x-visible"

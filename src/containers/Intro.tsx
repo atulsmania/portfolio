@@ -1,16 +1,10 @@
 import { motion } from "framer-motion";
 import Skills from "./Skills";
 import Section from "@/components/Section";
-import { useEffect, useRef } from "react";
-import { handleCursorEvents } from "@/lib/utils";
+import { useCursor } from "@/hooks/useCursor";
 
 const Intro = () => {
-  const ref = useRef<HTMLAnchorElement>(null);
-
-  useEffect(() => {
-    const unsubscribe = handleCursorEvents(ref);
-    return () => unsubscribe();
-  }, []);
+  const { elementRef } = useCursor<HTMLAnchorElement>(null);
 
   const variants = {
     initial: {
@@ -32,7 +26,7 @@ const Intro = () => {
     <Section
       id="intro"
       separator={false}
-      className="!min-h-[calc(100svh-100px)] pb-4 justify-end"
+      className="!min-h-[calc(100svh-100px)] pb-4 justify-end relative"
     >
       <motion.div
         variants={variants}
@@ -62,8 +56,8 @@ const Intro = () => {
           Explore my portfolio and see how I turn ideas into digital slam dunks!
           🏀 Ready to collaborate? &nbsp;
           <a
-            ref={ref}
-            className="relative dark:text-neutral-200 text-neutral-900 group"
+            ref={elementRef}
+            className="relative cursor-pointer dark:text-neutral-200 text-neutral-900 group"
           >
             Let’s talk!
             <span className="absolute inset-x-0 bottom-0 h-1 transition-transform duration-500 origin-right scale-x-0 group-hover:origin-left bg-gradient-to-r from-red-400 to-pink-500 group-hover:scale-x-100" />

@@ -4,12 +4,12 @@ import { setCurrentTheme } from "@/lib/utils";
 import Footer from "@/components/Footer";
 import About from "@/containers/About";
 import { Analytics } from "@vercel/analytics/react";
-import { Fragment, useLayoutEffect } from "react";
+import { useLayoutEffect } from "react";
 import Projects from "./containers/Projects";
 import Cursor from "./components/ui/cursor";
-import ParallaxBackground from "./components/ui/parallax-background";
 import Lenis from "lenis";
 import Contact from "./containers/Contact";
+import CursorContextProvider from "./context/CursorContext";
 
 const App = () => {
   useLayoutEffect(() => {
@@ -26,8 +26,7 @@ const App = () => {
   }, []);
 
   return (
-    <Fragment>
-      <ParallaxBackground />
+    <CursorContextProvider>
       <Cursor />
       <Header />
       <main className="w-full px-2 mx-auto space-y-20 font-body max-w-7xl">
@@ -38,7 +37,7 @@ const App = () => {
       </main>
       <Footer />
       <Analytics />
-    </Fragment>
+    </CursorContextProvider>
   );
 };
 

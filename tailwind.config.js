@@ -9,7 +9,7 @@ module.exports = {
   ],
   theme: {
     fontFamily: {
-      body: ["Oswald", "sans-serif"],
+      oswald: ["Oswald", "sans-serif"],
     },
     container: {
       center: true,

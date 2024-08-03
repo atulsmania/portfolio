@@ -1,6 +1,4 @@
-import { cursorStyles } from "@/components/ui/cursor";
 import { type ClassValue, clsx } from "clsx";
-import { RefObject } from "react";
 import { twMerge } from "tailwind-merge";
 
 export function cn(...inputs: ClassValue[]) {
@@ -34,30 +32,6 @@ export const toggleDarkMode = () => {
 
   document.documentElement.classList.remove(currentTheme);
   document.documentElement.classList.add(newTheme);
-};
-
-export const setCursorType = (cursorStyle: keyof typeof cursorStyles) => {
-  document
-    .getElementById("portal-cursor")!
-    .setAttribute("data-cursor", cursorStyle);
-};
-
-export const handleCursorEvents = (ref: RefObject<HTMLUnknownElement>) => {
-  if (!ref.current) return () => null;
-  const onMouseEnter = () => {
-    setCursorType("link");
-  };
-
-  const onMouseLeave = () => {
-    setCursorType("default");
-  };
-
-  ref.current?.addEventListener("mouseenter", onMouseEnter);
-  ref.current?.addEventListener("mouseleave", onMouseLeave);
-  return () => {
-    ref.current?.removeEventListener("mouseenter", onMouseEnter);
-    ref.current?.removeEventListener("mouseleave", onMouseLeave);
-  };
 };
 
 export const getCurrentTime = () => {
