@@ -5,11 +5,11 @@
 @tailwind utilities;
 
 .bg-light-mode {
-  @apply transition-colors duration-500 bg-neutral-50 text-neutral-800;
+  @apply text-neutral-800 from-neutral-100 via-blue-100 from-50% via-90% to-neutral-50 bg-gradient-to-tr;
 }
 
 .bg-dark-mode {
-  @apply dark:bg-black dark:text-neutral-50;
+  @apply dark:bg-gradient-to-tr dark:from-black dark:via-neutral-900 dark:from-40% dark:via-80% dark:to-black dark:text-neutral-50;
 }
 
 .circular-text {
