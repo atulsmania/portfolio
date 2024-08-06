@@ -1,4 +1,5 @@
 import Section from "@/components/Section";
+import { CursorType } from "@/components/ui/cursor";
 import TextProgress from "@/components/ui/text-progress";
 import { useCursor } from "@/hooks/useCursor";
 import { ComponentProps } from "react";
@@ -30,7 +31,7 @@ const Contact = () => {
 
 const Link = (props: ComponentProps<"a">) => {
   const { children, ...rest } = props;
-  const { elementRef } = useCursor<HTMLAnchorElement>();
+  const { elementRef } = useCursor<HTMLAnchorElement>(CursorType.underline);
 
   return (
     <a ref={elementRef} {...rest}>

@@ -2,7 +2,12 @@ import { InfiniteMovingCards } from "@/components/ui/infinite-moving-cards";
 import { skills } from "@/lib/utils";
 import { motion } from "framer-motion";
 
-const Skills = () => {
+type Direction = "left" | "right";
+type Props = {
+  direction?: Direction;
+};
+
+const Skills = ({ direction = "left" }: Props) => {
   return (
     <motion.div
       initial={{ opacity: 0, y: 20 }}
@@ -10,7 +15,7 @@ const Skills = () => {
       transition={{ duration: 0.5 }}
     >
       <InfiniteMovingCards
-        direction="left"
+        direction={direction}
         speed="slow"
         pauseOnHover={false}
         items={skills}

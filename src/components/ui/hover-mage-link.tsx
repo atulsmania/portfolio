@@ -10,6 +10,8 @@ import { useRef, useState } from "react";
 import { FiArrowRight } from "react-icons/fi";
 import { cn } from "@/lib/utils";
 import { useMediaQuery } from "usehooks-ts";
+import { useCursor } from "@/hooks/useCursor";
+import { CursorType } from "./cursor";
 
 type Props = {
   heading: string;
@@ -19,7 +21,8 @@ type Props = {
 };
 
 const Link = ({ heading, imgSrc, subheading, href }: Props) => {
-  const elementRef = useRef<HTMLAnchorElement>(null);
+  // const elementRef = useRef<HTMLAnchorElement>(null);
+  const { elementRef } = useCursor<HTMLAnchorElement>(CursorType.pointer);
   const isMobile = useMediaQuery("(max-width: 768px)");
   const [centered, setCentered] = useState(false);
 

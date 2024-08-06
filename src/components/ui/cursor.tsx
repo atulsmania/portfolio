@@ -5,7 +5,54 @@ import { useEffect } from "react";
 import { createPortal } from "react-dom";
 import { useMediaQuery } from "usehooks-ts";
 
-const cursorSize = 32;
+const cursorSize = 16;
+
+export enum CursorType {
+  cover,
+  underline,
+  pointer,
+}
+
+const getCursorBounds = (
+  element: HTMLElement,
+  cursorType: CursorType | null
+) => {
+  if (!element) return;
+
+  switch (cursorType) {
+    case CursorType.underline: {
+      const bounds = element.getBoundingClientRect();
+      return {
+        x: bounds.x,
+        y: bounds.y + bounds.height,
+        width: bounds.width,
+        height: 2,
+        radius: 4,
+      };
+    }
+    case CursorType.pointer: {
+      const bounds = element.getBoundingClientRect();
+      return {
+        x: bounds.x - cursorSize * 2,
+        y: bounds.y + bounds.height / 2 - cursorSize / 2,
+        width: cursorSize,
+        height: cursorSize,
+        radius: 50,
+      };
+    }
+    case CursorType.cover:
+    default: {
+      const bounds = element.getBoundingClientRect();
+      return {
+        x: bounds.x - cursorSize / 4,
+        y: bounds.y - cursorSize / 4,
+        width: bounds.width + cursorSize / 2,
+        height: bounds.height + cursorSize / 2,
+        radius: 4,
+      };
+    }
+  }
+};
 
 const Cursor = () => {
   const { hoveredElement } = useCursorContext();
@@ -25,8 +72,8 @@ const Cursor = () => {
 
   useEffect(() => {
     const onMouseMove = (e: MouseEvent) => {
-      const bounds = getElementBounds();
-      if (!bounds) {
+      const { target, type } = hoveredElement.current;
+      if (!target) {
         axisX.set(e.clientX - cursorSize / 2);
         axisY.set(e.clientY - cursorSize / 2);
         height.set(cursorSize);
@@ -35,15 +82,13 @@ const Cursor = () => {
         return;
       }
 
-      const x = bounds.x - cursorSize / 4;
-      const y = bounds.y + bounds.height;
-      const nWidth = bounds.width + cursorSize / 2;
-      const nHeight = 4;
-      axisX.set(x);
-      axisY.set(y);
-      height.set(nHeight);
-      width.set(nWidth);
-      radius.set(6);
+      const bounds = getCursorBounds(target, type);
+      if (!bounds) return;
+      axisX.set(bounds.x);
+      axisY.set(bounds.y);
+      height.set(bounds.height);
+      width.set(bounds.width);
+      radius.set(bounds.radius);
     };
 
     document.addEventListener("mousemove", onMouseMove);
@@ -51,12 +96,6 @@ const Cursor = () => {
       document.removeEventListener("mousemove", onMouseMove);
     };
   }, []);
-
-  const getElementBounds = () => {
-    if (!hoveredElement.current) return;
-    const bounds = hoveredElement.current.getBoundingClientRect();
-    return bounds;
-  };
 
   if (isMobile) {
     return null;
@@ -73,7 +112,7 @@ const Cursor = () => {
       }}
       className={cn(
         "transform-z-0 fixed rounded-full shadow-sm pointer-events-none",
-        "bg-black/30 dark:bg-white/60 z-50 backdrop-invert"
+        "bg-white z-50 mix-blend-difference"
       )}
     />
   );

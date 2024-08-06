@@ -3,11 +3,12 @@ import { getCurrentTime, toggleDarkMode } from "@/lib/utils";
 
 import { MdOutlineLightMode } from "react-icons/md";
 import { MdDarkMode } from "react-icons/md";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 import { ImLocation } from "react-icons/im";
 import { AnimatePresence } from "framer-motion";
 import { motion } from "framer-motion";
 import { useCursor } from "@/hooks/useCursor";
+import { CursorType } from "./ui/cursor";
 
 const Header = () => {
   const isDark = useMediaQuery("(prefers-color-scheme: dark)");
@@ -18,8 +19,8 @@ const Header = () => {
     toggleDarkMode();
   };
 
-  const { elementRef } = useCursor();
-  const { elementRef: timeRef } = useCursor<HTMLDivElement>();
+  const { elementRef } = useCursor(CursorType.cover);
+  const { elementRef: timeRef } = useCursor<HTMLDivElement>(CursorType.cover);
   const [time, setTime] = useState<string>(getCurrentTime());
   const seconds = 60 * 1000;
 

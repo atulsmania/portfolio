@@ -29,12 +29,10 @@ const App = () => {
     <CursorContextProvider>
       <Cursor />
       <Header />
-      <main className="w-full px-2 mx-auto space-y-20 font-body max-w-7xl">
-        <Intro />
-        <Projects />
-        <About />
-        <Contact />
-      </main>
+      <Intro />
+      <Projects />
+      <About />
+      <Contact />
       <Footer />
       <Analytics />
     </CursorContextProvider>

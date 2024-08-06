@@ -15,7 +15,7 @@ const Section = (props: SectionProps) => {
   return (
     <section
       className={cn(
-        "w-full flex flex-col justify-center items-center",
+        "w-full flex flex-col justify-center items-center px-2 md:px-28",
         className
       )}
       {...rest}

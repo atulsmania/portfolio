@@ -2,9 +2,10 @@ import { motion } from "framer-motion";
 import Skills from "./Skills";
 import Section from "@/components/Section";
 import { useCursor } from "@/hooks/useCursor";
+import { CursorType } from "@/components/ui/cursor";
 
 const Intro = () => {
-  const { elementRef } = useCursor<HTMLAnchorElement>(null);
+  const { elementRef } = useCursor<HTMLAnchorElement>(CursorType.cover);
 
   const variants = {
     initial: {
@@ -57,10 +58,11 @@ const Intro = () => {
           🏀 Ready to collaborate? &nbsp;
           <a
             ref={elementRef}
+            href="mailto:atul14.chauhan@outlook.com"
             className="relative cursor-pointer dark:text-neutral-200 text-neutral-900 group"
           >
             Let’s talk!
-            <span className="absolute inset-x-0 bottom-0 h-1 transition-transform duration-500 origin-right scale-x-0 group-hover:origin-left bg-gradient-to-r from-red-400 to-pink-500 group-hover:scale-x-100" />
+            <span className="absolute inset-x-0 bottom-0 h-1 transition-transform duration-500 origin-right scale-x-0 md:hidden group-hover:origin-left bg-gradient-to-r from-red-400 to-pink-500 group-hover:scale-x-100" />
           </a>
         </motion.span>
       </motion.div>

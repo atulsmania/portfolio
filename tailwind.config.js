@@ -19,11 +19,9 @@ module.exports = {
       },
     },
     extend: {
-      backgroundImage: {
-        "light-grid":
-          "linear-gradient(90deg, rgba(255,255,255,0.2) 1px, transparent 1px), linear-gradient(180deg, rgba(255,255,255,0.2) 1px, transparent 1px)",
-        "dark-grid":
-          "linear-gradient(90deg, rgba(0,0,0,0.2) 1px, transparent 1px), linear-gradient(180deg, rgba(0,0,0,0.2) 1px, transparent 1px)",
+      backgroundColor: {
+        gradient:
+          "linear-gradient(45deg, rgba(0,0,0,1) 0%, rgba(42,42,45,1) 78%, rgba(0,0,0,1) 100%)",
       },
       keyframes: {
         scroll: {
