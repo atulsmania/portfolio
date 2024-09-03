@@ -34,7 +34,7 @@ const Header = () => {
   }, []);
 
   return (
-    <header className="px-2 py-4">
+    <header className="sticky top-0 z-40 px-2 py-4 backdrop-blur">
       <motion.div
         initial={{ opacity: 0, y: -10 }}
         animate={{ opacity: 1, y: 0 }}

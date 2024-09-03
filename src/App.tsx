@@ -10,6 +10,8 @@ import Cursor from "./components/ui/cursor";
 import Lenis from "lenis";
 import Contact from "./containers/Contact";
 import CursorContextProvider from "./context/CursorContext";
+import Experience from "./containers/Experience";
+import Welcome from "./containers/Welcome";
 
 const App = () => {
   useLayoutEffect(() => {
@@ -31,6 +33,7 @@ const App = () => {
       <Header />
       <Intro />
       <Projects />
+      {/* <Experience /> */}
       <About />
       <Contact />
       <Footer />

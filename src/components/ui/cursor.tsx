@@ -5,7 +5,7 @@ import { useEffect } from "react";
 import { createPortal } from "react-dom";
 import { useMediaQuery } from "usehooks-ts";
 
-const cursorSize = 16;
+const cursorSize = 26;
 
 export enum CursorType {
   cover,
