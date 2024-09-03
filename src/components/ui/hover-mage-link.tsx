@@ -6,7 +6,7 @@ import {
   useScroll,
   useMotionValueEvent,
 } from "framer-motion";
-import { useRef, useState } from "react";
+import { useState } from "react";
 import { FiArrowRight } from "react-icons/fi";
 import { cn } from "@/lib/utils";
 import { useMediaQuery } from "usehooks-ts";
@@ -16,12 +16,10 @@ import { CursorType } from "./cursor";
 type Props = {
   heading: string;
   subheading: string;
-  imgSrc: string;
   href: string;
 };
 
-const Link = ({ heading, imgSrc, subheading, href }: Props) => {
-  // const elementRef = useRef<HTMLAnchorElement>(null);
+const Link = ({ heading, subheading, href }: Props) => {
   const { elementRef } = useCursor<HTMLAnchorElement>(CursorType.pointer);
   const isMobile = useMediaQuery("(max-width: 768px)");
   const [centered, setCentered] = useState(false);
@@ -77,23 +75,6 @@ const Link = ({ heading, imgSrc, subheading, href }: Props) => {
           {subheading}
         </span>
       </div>
-
-      <motion.img
-        style={{
-          top,
-          left,
-          translateX: "-50%",
-          translateY: "-50%",
-        }}
-        variants={{
-          initial: { scale: 0, rotate: "-12.5deg" },
-          whileHover: { scale: 1, rotate: "12.5deg" },
-        }}
-        transition={{ type: "spring" }}
-        src={imgSrc}
-        className="absolute z-0 object-cover w-32 h-24 rounded-lg md:h-48 md:w-64"
-        alt={`Image representing a link for ${heading}`}
-      />
 
       <motion.div
         variants={{

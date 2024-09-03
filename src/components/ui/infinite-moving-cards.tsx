@@ -82,7 +82,7 @@ export const InfiniteMovingCards = ({
           <Fragment key={idx}>
             <li className="w-2 h-2 bg-black rounded-full dark:bg-neutral-400" />
             <li
-              className="relative flex items-center flex-shrink-0 max-w-full px-8 w-fit"
+              className="relative flex items-center flex-shrink-0 max-w-full px-4 md:px-8 w-fit"
               key={idx}
             >
               <blockquote className="text-sm font-light md:font-medium md:text-xl text-neutral-900 dark:text-neutral-400">

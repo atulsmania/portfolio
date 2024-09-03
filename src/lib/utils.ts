@@ -11,11 +11,6 @@ export const skills = [
   "React",
   "Next.js",
   "Tailwind CSS",
-  "Git",
-  "GitHub",
-  "Node.js",
-  "Express",
-  "MongoDB",
   "D3JS",
   "GraphQL",
 ];

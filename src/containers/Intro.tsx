@@ -16,7 +16,6 @@ const Intro = () => {
       x: 0,
       opacity: 1,
       transition: {
-        delay: 0.5,
         duration: 0.5,
         staggerChildren: 0.25,
       },
@@ -27,7 +26,7 @@ const Intro = () => {
     <Section
       id="intro"
       separator={false}
-      className="!min-h-[calc(100svh-100px)] pb-4 justify-end relative"
+      className="relative min-h-[calc(100vh/2)] mt-36 justify-end pb-4"
     >
       <motion.div
         variants={variants}
@@ -51,7 +50,7 @@ const Intro = () => {
         <br />
         <motion.span
           variants={variants}
-          className="inline-block max-w-5xl text-sm font-semibold pb-14 md:pb-20 md:font-medium md:text-2xl text-neutral-500 dark:text-neutral-500"
+          className="inline-block max-w-5xl text-sm font-semibold pb-14 md:pb-20 md:font-normal md:text-2xl text-neutral-500 dark:text-neutral-500"
         >
           🚀 Bringing the precision of a three-pointer to every line of code.
           Explore my portfolio and see how I turn ideas into digital slam dunks!
