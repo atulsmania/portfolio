@@ -5,19 +5,19 @@ const Projects = () => {
   return (
     <Section id="my-projects" title="Projects">
       <Link
-        imgSrc="https://i.ibb.co/xMWMfYK/quick-fill.png"
+        imgSrc="https://usfff5r1bhta5fkn.public.blob.vercel-storage.com/project-images/quick-fill.webp"
         heading="QuickFill"
         subheading="Chrome extension to quickly fill forms."
         href="https://github.com/atulsmania/quick-fill"
       />
       <Link
-        imgSrc="https://i.ibb.co/RPc8zYp/find-flix.png"
+        imgSrc="https://usfff5r1bhta5fkn.public.blob.vercel-storage.com/project-images/find-flix.webp"
         heading="FindFlix"
         subheading="Movie and TV show search engine."
         href="https://github.com/atulsmania/findflix"
       />
       <Link
-        imgSrc="https://i.ibb.co/rvwMMJP/quick-font.png"
+        imgSrc="https://usfff5r1bhta5fkn.public.blob.vercel-storage.com/project-images/quick-font.webp"
         heading="QuickFont"
         subheading="Quickly test fonts for your website."
         href="https://github.com/atulsmania/quick-font"
